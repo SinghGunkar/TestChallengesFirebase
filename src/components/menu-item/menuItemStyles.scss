@@ -1,0 +1,93 @@
+.menu-item {
+    width: 20%;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    overflow: hidden;
+    // border: 1px red solid;
+
+    &:last-child {
+        margin-right: 0px;
+    }
+
+    &:hover {
+        & .background-image {
+            transform: scale(1.1);
+            transition: transform 3s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+        }
+
+        & .content {
+            opacity: 1;
+        }
+    }
+
+    .background-image {
+        background-size: contain;
+        height: 100vh;
+        margin-bottom: 15px;
+    }
+
+    .content {
+        height: 350px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border-radius: 3px;
+        cursor: pointer;
+        opacity: 0.7;
+        position: absolute;
+        // border: 1px red solid;
+
+        .title {
+            margin: 0 5px 0;
+            font-size: 22px;
+            font-weight: bold;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            font-size: 22px;
+            background-color: white;
+            border-radius: 2px;
+            margin-left: 25px;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        @media (max-width: 900px) {
+            .title {
+                font-size: 16px;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+                writing-mode: vertical-rl;
+                text-orientation: upright;
+                padding-top: 25px;
+                padding-bottom: 25px;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .menu-item {
+        margin: 0px;
+    }
+
+    body {
+        padding: 5px;
+    }
+}

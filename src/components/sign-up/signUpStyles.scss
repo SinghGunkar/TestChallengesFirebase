@@ -1,0 +1,29 @@
+.sign-up-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 25px;
+    background-color: aliceblue;
+    width: 50%;
+    margin-left: 50px;
+
+    .sign-up-title {
+        font-size: 25px;
+        font-weight: bolder;
+        margin-bottom: 15px;
+    }
+
+    .sign-up-sub-title {
+        font-size: 16px;
+    }
+
+    .sign-up-form {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+
+        input {
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+    }
+}

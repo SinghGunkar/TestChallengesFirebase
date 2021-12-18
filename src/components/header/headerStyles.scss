@@ -1,0 +1,20 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 15px;
+
+    .navigation-links-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-content: flex-end;
+        min-width: 20%;
+
+        .link {
+            margin-left: 15px;
+            text-align: right;
+        }
+    }
+}
