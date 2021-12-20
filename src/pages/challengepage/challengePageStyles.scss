@@ -1,0 +1,22 @@
+.challenge-page-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 1px red solid;
+
+    .left-column {
+        width: 50%;
+    }
+
+    .right-column {
+        width: 50%;
+        text-align: right;
+        margin-left: 50px;
+    }
+
+    @media (max-width: 900px) {
+        .right-column {
+            margin-left: 5px;
+        }
+    }
+}

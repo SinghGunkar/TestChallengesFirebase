@@ -3,8 +3,6 @@ import { connect } from "react-redux"
 import "./instructionsStyles.scss"
 
 const Instructions = ({ instructions }) => {
-    console.log(instructions)
-
     return (
         <div className="instructions-container">
             <h3>Instructions Go Here</h3>
