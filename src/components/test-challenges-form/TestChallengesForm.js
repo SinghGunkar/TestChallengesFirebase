@@ -5,7 +5,7 @@ import { validateTestCase } from "../../redux/actions.js/testCaseActions"
 import FormInput from "../form-input/FormInput"
 import Button from "../button/Button"
 
-const TestChallengesForm = ({ props }) => {
+const TestChallengesForm = ({ validateTestCase }) => {
     const [userInput, setUserInput] = useState("")
 
     const handleChange = e => {
@@ -14,7 +14,7 @@ const TestChallengesForm = ({ props }) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log("submit " + userInput + " to backend")
+        validateTestCase(userInput)
         setUserInput("")
     }
 
