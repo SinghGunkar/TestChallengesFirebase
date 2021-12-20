@@ -1,20 +1,21 @@
 import React, { useState } from "react"
-
+import { connect } from "react-redux"
+import { signIn } from "../../redux/actions.js/authActions"
 import "./signInStyles.scss"
 import Button from "../button/Button"
 import FormInput from "../form-input/FormInput"
 
-const SignIn = () => {
+const SignIn = ({ signIn, authError }) => {
     const [state, setState] = useState({
         email: "",
         password: ""
     })
 
+    console.log(authError)
+
     const handleSubmit = event => {
         event.preventDefault()
-        console.log(
-            `Attempted sign in using:\nUsername: ${state.email} \npassword: ${state.password}`
-        )
+        signIn(state)
         setState({ email: "", password: "" })
     }
 
@@ -55,9 +56,26 @@ const SignIn = () => {
                 >
                     Sign in with Google
                 </Button>
+
+                <h5 className="sign-in-error">
+                    {authError ? "Invalid credentials" : ""}
+                </h5>
             </form>
         </div>
     )
 }
 
-export default SignIn
+const mapStateToProps = state => {
+    console.log(state)
+    return {
+        authError: state.auth.authError
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        signIn: credentials => dispatch(signIn(credentials))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
