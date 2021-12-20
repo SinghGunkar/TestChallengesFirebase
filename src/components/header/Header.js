@@ -14,8 +14,8 @@ const Header = ({ currentUser }) => {
 
             <div className="navigation-links-wrapper">
                 <div>
-                    <Link className="link" to="/contact">
-                        CONTACT
+                    <Link className="link" to="/challenge">
+                        CHALLENGE
                     </Link>
                 </div>
 
