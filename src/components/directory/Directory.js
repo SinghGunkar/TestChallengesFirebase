@@ -1,5 +1,5 @@
 import React from "react"
-
+import { useHistory } from "react-router-dom"
 import MenuItem from "../menu-item/MenuItem"
 
 import "./directoryStyles.scss"
@@ -15,8 +15,13 @@ const Directory = () => {
         imageAlt: "blackBackground"
     }
 
+    const history = useHistory()
+    const handleClick = () => {
+        history.push("/challenge")
+    }
+
     return (
-        <div className="directory-comp">
+        <div className="directory-comp" onClick={handleClick}>
             <MenuItem
                 key={homePageDisplayData.id}
                 title={homePageDisplayData.title}

@@ -1,11 +1,12 @@
 import React, { useState } from "react"
-
+import { connect } from "react-redux"
 import Button from "../button/Button"
 import FormInput from "../form-input/FormInput"
+import { signUpUser } from "../../redux/actions.js/authActions"
 
 import "./signUpStyles.scss"
 
-const SignUp = () => {
+const SignUp = ({ signUpUser }) => {
     const [state, setState] = useState({
         name: "",
         email: "",
@@ -16,9 +17,10 @@ const SignUp = () => {
     const handleSubmit = event => {
         event.preventDefault()
         console.log(
-            `Attempted sign in using:\nUsername: ${state.name} and ${state.email} using: \npassword: ${state.password} and ${state.confirmPassword}`
+            `Attempted sign in using:\nUsername: ${state.name}\n${state.email}\nPassword: ${state.password}\nConfirmPassword: ${state.confirmPassword}`
         )
-        setState({ email: "", password: "" })
+        signUpUser(state)
+        setState({ name: "", email: "", password: "", confirmPassword: "" })
     }
 
     const handleChange = event => {
@@ -73,4 +75,10 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+const mapDispatchToProps = dispatch => {
+    return {
+        signUpUser: userSignUpData => dispatch(signUpUser(userSignUpData))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SignUp)
