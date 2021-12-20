@@ -1,8 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-import { auth } from "../../firebase/firebase.utils"
-
 import "./headerStyles.scss"
 
 const Header = ({ currentUser }) => {
@@ -21,7 +19,11 @@ const Header = ({ currentUser }) => {
 
                 <div>
                     {currentUser ? (
-                        <Link className="link" to="/" onClick={() => auth.signOut()}>
+                        <Link
+                            className="link"
+                            to="/"
+                            onClick={() => console.log("signout")}
+                        >
                             SIGNOUT
                         </Link>
                     ) : (

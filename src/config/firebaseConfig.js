@@ -1,9 +1,9 @@
-import firebase from "firebase/app"
-import "firebase/firestore"
-import "firebase/auth"
+import firebase from "firebase/compat/app"
+import "firebase/compat/auth"
+import "firebase/compat/firestore"
 
-const firebaseConfig = {
-    apiKey: "AIzaSyAm7U-U8QgfancoCHLrEh1MAUhTlpo8B0g",
+export const firebaseConfig = {
+    apiKey: "AIzaSyAm7U-U8QgfancoCHLrEh1MAUhTlpo8B0g", // This is an identification key and is safe to expose to the public
     authDomain: "test-challenges-firebase.firebaseapp.com",
     projectId: "test-challenges-firebase",
     storageBucket: "test-challenges-firebase.appspot.com",

@@ -3,10 +3,14 @@ import thunk from "redux-thunk"
 import { getFirestore, reduxFirestore } from "redux-firestore"
 import { getFirebase, reactReduxFirebase } from "react-redux-firebase"
 import { rootReducer } from "./reducers/rootReducer"
+import { firebaseConfig } from "../config/firebaseConfig"
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 export const store = createStore(
     rootReducer,
-    composeEnhancers(applyMiddleware(thunk))
+    composeEnhancers(
+        applyMiddleware(thunk.withExtraArgument({ getFirestore, getFirebase })),
+        reduxFirestore(firebaseConfig)
+    )
 )
