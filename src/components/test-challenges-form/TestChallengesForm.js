@@ -1,20 +1,42 @@
-import React from "react"
+import React, { useState } from "react"
 import { connect } from "react-redux"
 import "./testChallengesForm.scss"
 import { validateTestCase } from "../../redux/actions.js/testCaseActions"
+import FormInput from "../form-input/FormInput"
+import Button from "../button/Button"
 
 const TestChallengesForm = ({ props }) => {
+    const [userInput, setUserInput] = useState("")
+
+    const handleChange = e => {
+        setUserInput(e.target.value)
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        console.log("submit " + userInput + " to backend")
+        setUserInput("")
+    }
+
     return (
-        <div>
-            <h1>TestChallengesForm</h1>
+        <div className="test-challenges-form-container">
+            <h3 className="title">Enter Input below</h3>
+
+            <form className="test-challenges-form">
+                <FormInput
+                    name="userInput"
+                    type="text"
+                    handleChange={e => handleChange(e)}
+                    value={userInput || ""}
+                    label="Text"
+                    required
+                />
+                <Button onClick={handleSubmit} isGoogleSignIn={false} type="submit">
+                    Submit
+                </Button>
+            </form>
         </div>
     )
-}
-
-const mapStateToProps = state => {
-    return {
-        instructions: state.testCases.instructions
-    }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -23,4 +45,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TestChallengesForm)
+export default connect(null, mapDispatchToProps)(TestChallengesForm)
