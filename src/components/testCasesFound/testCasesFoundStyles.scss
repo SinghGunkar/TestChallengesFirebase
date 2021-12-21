@@ -1,6 +1,10 @@
-.found-test-cases-container > li {
-    text-align: right;
-    list-style-type: square;
-    direction: rtl;
-    list-style-position: inside;
+.found-test-cases-container {
+    background-color: rgb(206, 253, 238);
+
+    li {
+        text-align: right;
+        list-style-type: square;
+        direction: rtl;
+        list-style-position: inside;
+    }
 }

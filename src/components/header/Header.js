@@ -1,9 +1,9 @@
 import React from "react"
 import { Link } from "react-router-dom"
-
+import { connect } from "react-redux"
 import "./headerStyles.scss"
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, state }) => {
     return (
         <div className="header">
             <Link className="logo-wrapper" to="/">
@@ -37,4 +37,8 @@ const Header = ({ currentUser }) => {
     )
 }
 
-export default Header
+const mapStateToProps = state => {
+    return { state }
+}
+
+export default connect(mapStateToProps)(Header)

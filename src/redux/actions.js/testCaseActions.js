@@ -1,18 +1,17 @@
+import inputValidationAPI from "../../apis/inputValidationAPI"
+
 export const validateTestCase = payload => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
-        const firestore = getFirestore()
-        firestore
-            .collection("Users")
-            .add({
-                email: payload,
-                name: payload,
-                password: payload
+        inputValidationAPI
+            .post("/submitTerm", {
+                term: payload
             })
-            .then(() => {
-                dispatch({ type: "VALIDATE_TESTCASE", payload })
-            })
-            .catch(err => {
-                dispatch({ type: "VALIDATE_TESTCASE_ERROR" })
-            })
+            .then(response =>
+                dispatch({
+                    type: "VALIDATE_TESTCASE",
+                    payload: response.data.data
+                })
+            )
+            .catch(err => console.log(err))
     }
 }

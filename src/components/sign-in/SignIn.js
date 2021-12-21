@@ -57,16 +57,13 @@ const SignIn = ({ signIn, authError }) => {
                     Sign in with Google
                 </Button>
 
-                <h5 className="sign-in-error">
-                    {authError ? "Invalid credentials" : ""}
-                </h5>
+                <h5 className="sign-in-error">{authError ? `${authError}` : ""}</h5>
             </form>
         </div>
     )
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     return {
         authError: state.auth.authError
     }

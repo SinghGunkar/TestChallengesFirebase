@@ -8,7 +8,7 @@ const Instructions = ({ instructions }) => {
             <h3>Instructions Go Here</h3>
             <li>instruction 1</li>
             <li>instruction 2</li>
-            <li>{instructions + " <=from redux store"}</li>
+            {/* <li>{instructions + " <=from redux store"}</li> */}
         </div>
     )
 }
