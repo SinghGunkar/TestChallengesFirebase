@@ -5,8 +5,8 @@ import { compose } from "redux"
 import { signOut } from "../../redux/actions.js/authActions"
 import "./headerStyles.scss"
 
-const Header = ({ isUserLoggedOut, logOut }) => {
-    console.log(isUserLoggedOut)
+const Header = ({ isUserSignedIn, logOut, isAuthStateLoaded }) => {
+    console.log(isAuthStateLoaded)
 
     return (
         <div className="header">
@@ -16,19 +16,23 @@ const Header = ({ isUserLoggedOut, logOut }) => {
 
             <div className="navigation-links-wrapper">
                 <div>
-                    <Link className="link" to="/challenge">
-                        CHALLENGE
-                    </Link>
+                    {isUserSignedIn && isAuthStateLoaded ? (
+                        <Link className="link" to="/challenge">
+                            CHALLENGE
+                        </Link>
+                    ) : (
+                        ""
+                    )}
                 </div>
 
                 <div>
-                    {isUserLoggedOut ? (
-                        <Link className="link" to="/signinsignup">
-                            SIGNIN
-                        </Link>
-                    ) : (
+                    {isUserSignedIn && isAuthStateLoaded ? (
                         <Link className="link" to="/" onClick={logOut}>
                             SIGNOUT
+                        </Link>
+                    ) : (
+                        <Link className="link" to="/signinsignup">
+                            SIGNIN
                         </Link>
                     )}
                 </div>
@@ -38,9 +42,10 @@ const Header = ({ isUserLoggedOut, logOut }) => {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
-
-    return { isUserLoggedOut: state.firebase.auth.isEmpty }
+    return {
+        isUserSignedIn: !state.firebase.auth.isEmpty,
+        isAuthStateLoaded: state.firebase.auth.isLoaded
+    }
 }
 
 const mapDispatchToProps = dispatch => {
