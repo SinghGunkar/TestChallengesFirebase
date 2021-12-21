@@ -6,8 +6,6 @@ import { signOut } from "../../redux/actions.js/authActions"
 import "./headerStyles.scss"
 
 const Header = ({ isUserSignedIn, logOut, isAuthStateLoaded }) => {
-    console.log(isAuthStateLoaded)
-
     return (
         <div className="header">
             <Link className="logo-wrapper" to="/">

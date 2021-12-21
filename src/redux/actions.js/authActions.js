@@ -1,21 +1,23 @@
 export const signUpUser = payload => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore()
+        const firebase = getFirebase()
         const { name, email, password, confirmPassword } = payload
 
-        firestore
-            .collection("Users")
-            .add({
-                name,
-                email,
-                password,
-                confirmPassword
+        firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then(response => {
+                return firestore.collection("users").doc(response.user.uid).set({
+                    name,
+                    email
+                })
             })
             .then(() => {
-                dispatch({ type: "SIGN_UP_USER", payload })
+                dispatch({ type: "SIGNUP_SUCCESS" })
             })
             .catch(err => {
-                dispatch({ type: "SIGN_UP_USER_ERROR" })
+                dispatch({ type: "SIGNUP_ERROR", payload: err })
             })
     }
 }
@@ -40,8 +42,6 @@ export const signIn = payload => {
 export const signOut = () => {
     return (dispatch, getState, { getFirebase }) => {
         const firebase = getFirebase()
-
-        // console.log(firebase)
 
         firebase
             .logout()
