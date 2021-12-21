@@ -5,7 +5,7 @@ import "./signInStyles.scss"
 import Button from "../button/Button"
 import FormInput from "../form-input/FormInput"
 
-const SignIn = ({ signIn, authError }) => {
+const SignIn = ({ signIn, signInError }) => {
     const [state, setState] = useState({
         email: "",
         password: ""
@@ -55,7 +55,9 @@ const SignIn = ({ signIn, authError }) => {
                     Sign in with Google
                 </Button>
 
-                <h5 className="sign-in-error">{authError ? `${authError}` : ""}</h5>
+                <h5 className="sign-in-error">
+                    {signInError ? `${signInError}` : ""}
+                </h5>
             </form>
         </div>
     )
@@ -63,7 +65,7 @@ const SignIn = ({ signIn, authError }) => {
 
 const mapStateToProps = state => {
     return {
-        authError: state.auth.authError
+        signInError: state.auth.signInError
     }
 }
 

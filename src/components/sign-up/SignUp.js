@@ -6,7 +6,7 @@ import { signUpUser } from "../../redux/actions.js/authActions"
 
 import "./signUpStyles.scss"
 
-const SignUp = ({ signUpUser }) => {
+const SignUp = ({ signUpUser, signUpError }) => {
     const [state, setState] = useState({
         name: "",
         email: "",
@@ -70,9 +70,19 @@ const SignUp = ({ signUpUser }) => {
                 />
 
                 <Button type="submit"> Sign Up </Button>
+                <br />
+                <h5 className="sign-up-error">
+                    {signUpError ? `${signUpError}` : ""}
+                </h5>
             </form>
         </div>
     )
+}
+
+const mapStateToProps = state => {
+    return {
+        signUpError: state.auth.signUpError
+    }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -81,4 +91,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(SignUp)
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
