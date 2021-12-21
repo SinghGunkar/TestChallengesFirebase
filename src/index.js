@@ -11,6 +11,7 @@ import { ReactReduxFirebaseProvider } from "react-redux-firebase"
 
 const rootElement = document.getElementById("root")
 
+// app working
 const rrfProps = {
     firebase,
     config: firebaseConfig,
