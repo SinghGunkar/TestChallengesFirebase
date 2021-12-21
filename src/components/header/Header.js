@@ -1,9 +1,13 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
+import { compose } from "redux"
+import { signOut } from "../../redux/actions.js/authActions"
 import "./headerStyles.scss"
 
-const Header = ({ currentUser, state }) => {
+const Header = ({ isUserLoggedOut, logOut }) => {
+    console.log(isUserLoggedOut)
+
     return (
         <div className="header">
             <Link className="logo-wrapper" to="/">
@@ -18,17 +22,13 @@ const Header = ({ currentUser, state }) => {
                 </div>
 
                 <div>
-                    {currentUser ? (
-                        <Link
-                            className="link"
-                            to="/"
-                            onClick={() => console.log("signout")}
-                        >
-                            SIGNOUT
-                        </Link>
-                    ) : (
+                    {isUserLoggedOut ? (
                         <Link className="link" to="/signinsignup">
                             SIGNIN
+                        </Link>
+                    ) : (
+                        <Link className="link" to="/" onClick={logOut}>
+                            SIGNOUT
                         </Link>
                     )}
                 </div>
@@ -38,7 +38,15 @@ const Header = ({ currentUser, state }) => {
 }
 
 const mapStateToProps = state => {
-    return { state }
+    console.log(state)
+
+    return { isUserLoggedOut: state.firebase.auth.isEmpty }
 }
 
-export default connect(mapStateToProps)(Header)
+const mapDispatchToProps = dispatch => {
+    return {
+        logOut: () => dispatch(signOut())
+    }
+}
+
+export default compose(connect(mapStateToProps, mapDispatchToProps))(Header)

@@ -11,8 +11,6 @@ const SignIn = ({ signIn, authError }) => {
         password: ""
     })
 
-    console.log(authError)
-
     const handleSubmit = event => {
         event.preventDefault()
         signIn(state)

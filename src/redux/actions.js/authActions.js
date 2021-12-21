@@ -21,8 +21,6 @@ export const signUpUser = payload => {
 }
 
 export const signIn = payload => {
-    console.log(payload)
-
     const { email, password } = payload
 
     return (dispatch, getState, { getFirebase }) => {
@@ -35,6 +33,23 @@ export const signIn = payload => {
             })
             .catch(err => {
                 dispatch({ type: "LOGIN_ERROR", payload: err })
+            })
+    }
+}
+
+export const signOut = () => {
+    return (dispatch, getState, { getFirebase }) => {
+        const firebase = getFirebase()
+
+        // console.log(firebase)
+
+        firebase
+            .logout()
+            .then(() => {
+                dispatch({ type: "SIGNOUT_SUCCESS" })
+            })
+            .catch(err => {
+                console.log(err)
             })
     }
 }
