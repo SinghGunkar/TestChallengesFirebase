@@ -5,7 +5,7 @@ import { validateTestCase } from "../../redux/actions.js/testCaseActions"
 import FormInput from "../form-input/FormInput"
 import Button from "../button/Button"
 
-const TestChallengesForm = ({ validateTestCase }) => {
+const TestChallengesForm = ({ fetchValidationResults, appState }) => {
     const [userInput, setUserInput] = useState("")
 
     const handleChange = e => {
@@ -14,7 +14,7 @@ const TestChallengesForm = ({ validateTestCase }) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        validateTestCase(userInput)
+        fetchValidationResults(userInput)
         setUserInput("")
     }
 
@@ -39,10 +39,16 @@ const TestChallengesForm = ({ validateTestCase }) => {
     )
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
     return {
-        validateTestCase: userInput => dispatch(validateTestCase(userInput))
+        appState: state
     }
 }
 
-export default connect(null, mapDispatchToProps)(TestChallengesForm)
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchValidationResults: userInput => dispatch(validateTestCase(userInput))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TestChallengesForm)

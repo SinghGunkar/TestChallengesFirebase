@@ -1,23 +1,44 @@
 import React from "react"
-import { connect } from "react-redux"
+import { useSelector } from "react-redux"
+import { useFirestoreConnect, isLoaded, isEmpty } from "react-redux-firebase"
 import "./testCasesFoundStyles.scss"
 
-const TestCasesFound = ({ validationResults }) => {
+const TestCasesFound = () => {
+    const uid = useSelector(state => state.firebase.auth.uid)
+
+    useFirestoreConnect([{ collection: "users", doc: uid }])
+
+    const foundTestCases = useSelector(
+        ({ firestore: { data } }) => data.users && data.users[uid].FoundTestCases
+    )
+
+    if (!isLoaded(foundTestCases)) {
+        return <h3>Loading</h3>
+    }
+
+    if (isEmpty(foundTestCases)) {
+        return <h3>You haven't found any test cases yet</h3>
+    }
+
     return (
         <div className="found-test-cases-container">
             <h3>Test Cases Found</h3>
 
-            {validationResults.map((result, idk) => {
-                return <li key={idk}>{result}</li>
+            {foundTestCases.map((result, idk) => {
+                return <li key={idk}>{result.testCase}</li>
             })}
         </div>
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        validationResults: state.testCases.validationResults
-    }
-}
+// const mapStateToProps = state => {
+//     console.log(state)
 
-export default connect(mapStateToProps)(TestCasesFound)
+//     return {
+//         validationResults: state.testCases.validationResults,
+//         dataFromFireStore: state.firestore.data,
+//         uid: state.firebase.auth.uid
+//     }
+// }
+
+export default TestCasesFound
