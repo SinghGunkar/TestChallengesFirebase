@@ -12,6 +12,8 @@ const TestCasesFound = () => {
         ({ firestore: { data } }) => data.users && data.users[uid]?.FoundTestCases
     )
 
+    // console.log(foundTestCases)
+
     if (!foundTestCases) {
         return <h3>You haven't found any test cases yet</h3>
     }
@@ -29,7 +31,7 @@ const TestCasesFound = () => {
             <h3>Test Cases Found</h3>
 
             {foundTestCases.map((result, idk) => {
-                return <li key={idk}>{result}</li>
+                return <li key={idk}>{result.testCase}</li>
             })}
         </div>
     )

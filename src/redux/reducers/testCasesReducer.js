@@ -1,6 +1,7 @@
 const initialState = {
     instructions: "Instructions go here",
-    validationResults: []
+    validationResults: [],
+    fetchingState: "idle"
 }
 
 const testCasesReducer = (state = initialState, action) => {
@@ -9,10 +10,13 @@ const testCasesReducer = (state = initialState, action) => {
             return { ...state, validationResults: action.payload }
         case "VALIDATE_TESTCASE_ERROR":
             console.log("Error validating the following input" + action.payload)
-            return state
+            return { ...state, fetchingState: "idle" }
         case "VALIDATE_TESTCASE_SUCCESS":
             console.log("Validation was success")
-            return state
+            return { ...state, fetchingState: "idle" }
+        case "START_FETCHING_VALIDATION_RESULTS":
+            console.log(action.payload)
+            return { ...state, fetchingState: action.payload }
         default:
             return state
     }

@@ -2,7 +2,9 @@ export const signUpUser = payload => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore()
         const firebase = getFirebase()
-        const { name, email, password, confirmPassword } = payload
+
+        // const { name, email, password, confirmPassword } = payload
+        const { name, email, password } = payload
 
         firebase
             .auth()
@@ -10,7 +12,8 @@ export const signUpUser = payload => {
             .then(response => {
                 return firestore.collection("users").doc(response.user.uid).set({
                     name,
-                    email
+                    email,
+                    FoundTestCases: []
                 })
             })
             .then(() => {
