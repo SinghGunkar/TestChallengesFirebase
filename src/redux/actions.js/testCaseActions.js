@@ -25,10 +25,6 @@ export const validateTestCase = payload => {
 
                 const isFoundNewTestCases = newResults.length > 0
 
-                console.log(validatonResults)
-                console.log("new results: ", newResults)
-                console.log("old cases: ", currentUserTestCases)
-
                 if (isFoundNewTestCases) {
                     const foundTestCaseTime = new Date()
                     const foundTestCasesWithTimeStamps = newResults
