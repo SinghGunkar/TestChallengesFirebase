@@ -10,6 +10,9 @@ const testCasesReducer = (state = initialState, action) => {
         case "VALIDATE_TESTCASE_ERROR":
             console.log("Error validating the following input" + action.payload)
             return state
+        case "VALIDATE_TESTCASE_SUCCESS":
+            console.log("Validation was success")
+            return state
         default:
             return state
     }

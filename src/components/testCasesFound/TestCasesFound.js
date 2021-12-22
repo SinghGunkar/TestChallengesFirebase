@@ -9,8 +9,12 @@ const TestCasesFound = () => {
     useFirestoreConnect([{ collection: "users", doc: uid }])
 
     const foundTestCases = useSelector(
-        ({ firestore: { data } }) => data.users && data.users[uid].FoundTestCases
+        ({ firestore: { data } }) => data.users && data.users[uid]?.FoundTestCases
     )
+
+    if (!foundTestCases) {
+        return <h3>You haven't found any test cases yet</h3>
+    }
 
     if (!isLoaded(foundTestCases)) {
         return <h3>Loading</h3>
@@ -25,7 +29,7 @@ const TestCasesFound = () => {
             <h3>Test Cases Found</h3>
 
             {foundTestCases.map((result, idk) => {
-                return <li key={idk}>{result.testCase}</li>
+                return <li key={idk}>{result}</li>
             })}
         </div>
     )

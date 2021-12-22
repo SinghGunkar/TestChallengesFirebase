@@ -4,7 +4,6 @@ import Instructions from "../../components/instructions.js/Instructions"
 import TestChallengesForm from "../../components/test-challenges-form/TestChallengesForm"
 import TestCasesFound from "../../components/testCasesFound/TestCasesFound"
 import { connect } from "react-redux"
-import { firebaseConnect } from "react-redux-firebase"
 import { Redirect } from "react-router-dom"
 
 const ChallengePage = ({ isUserSignedIn }) => {
