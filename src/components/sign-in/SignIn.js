@@ -1,11 +1,11 @@
 import React, { useState } from "react"
 import { connect } from "react-redux"
-import { signIn } from "../../redux/actions.js/authActions"
+import { signIn, signInWithGoogle } from "../../redux/actions.js/authActions"
 import "./signInStyles.scss"
 import Button from "../button/Button"
 import FormInput from "../form-input/FormInput"
 
-const SignIn = ({ signIn, signInError }) => {
+const SignIn = ({ signIn, signInError, signInWithGoogle }) => {
     const [state, setState] = useState({
         email: "",
         password: ""
@@ -48,10 +48,7 @@ const SignIn = ({ signIn, signInError }) => {
                 />
 
                 <Button type="submit"> Sign in </Button>
-                <Button
-                    onClick={() => console.log("handle sign in with Google")}
-                    isGoogleSignIn={true}
-                >
+                <Button onClick={signInWithGoogle} isGoogleSignIn={true}>
                     Sign in with Google
                 </Button>
 
@@ -71,7 +68,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        signIn: credentials => dispatch(signIn(credentials))
+        signIn: credentials => dispatch(signIn(credentials)),
+        signInWithGoogle: () => dispatch(signInWithGoogle())
     }
 }
 

@@ -1,15 +1,28 @@
 import inputValidationAPI from "../../apis/inputValidationAPI"
 
+/* 
+Note: the code is this file is a messy. Suggested course of action to 
+*/
+
 export const validateTestCase = payload => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const fireStore = getFirestore()
         const state = getState()
         const uid = state.firebase.auth.uid
-        const currentUserTestCases = state.firebase.profile.FoundTestCases.map(
+        let currentUserTestCases = state.firebase.profile.FoundTestCases?.map(
             object => object.testCase
         )
-        const currentUserTestCasesWithTimeStamps =
-            state.firebase.profile.FoundTestCases
+
+        if (!currentUserTestCases) {
+            currentUserTestCases = []
+        }
+
+        let currentUserTestCasesWithTimeStamps =
+            state.firebase.profile?.FoundTestCases
+
+        if (!currentUserTestCasesWithTimeStamps) {
+            currentUserTestCasesWithTimeStamps = []
+        }
 
         inputValidationAPI
             .post("/submitTerm", {
@@ -44,7 +57,6 @@ export const validateTestCase = payload => {
                     )
                 }
 
-                console.log("found no new results")
                 return validatonResults
             })
             .then(validatonResults => {

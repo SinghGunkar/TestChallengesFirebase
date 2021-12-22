@@ -56,3 +56,21 @@ export const signOut = () => {
             })
     }
 }
+
+export const signInWithGoogle = () => {
+    return (dispatch, getState, { getFirebase }) => {
+        const firebase = getFirebase()
+
+        firebase
+            .login({
+                provider: "google",
+                type: "popup"
+            })
+            .then(() => {
+                dispatch({ type: "GOOGLE_SIGN_IN_SUCCESS" })
+            })
+            .catch(err => {
+                dispatch({ type: "LOGIN_ERROR", payload: err })
+            })
+    }
+}

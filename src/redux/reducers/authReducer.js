@@ -25,10 +25,15 @@ const authReducer = (state = initialState, action) => {
             }
         case "SIGNUP_ERROR":
             console.log("Sign up error")
-
             return {
                 ...state,
                 signUpError: action.payload.message
+            }
+        case "GOOGLE_SIGN_IN_SUCCESS":
+            console.log("Google sign in success")
+            return {
+                ...state,
+                signUpError: null
             }
         default:
             return state
