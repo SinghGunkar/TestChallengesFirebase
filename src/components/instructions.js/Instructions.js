@@ -4,9 +4,12 @@ import "./instructionsStyles.scss"
 const Instructions = () => {
     return (
         <div className="instructions-container">
-            <h3>Instructions Go Here</h3>
-            <li>instruction 1</li>
-            <li>instruction 2</li>
+            <h3>Instructions</h3>
+            <li>Perform input (text) validation using the text field</li>
+            <li>Here are some contraints:</li>
+            <li>Maximum length: 20</li>
+            <li>Minimum length: 10</li>
+            <li>Using the constraints above, can you find all of the test cases?</li>
         </div>
     )
 }
