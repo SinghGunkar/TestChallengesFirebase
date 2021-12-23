@@ -4,9 +4,16 @@ import "./testChallengesForm.scss"
 import { validateTestCase } from "../../redux/actions.js/testCaseActions"
 import FormInput from "../form-input/FormInput"
 import Button from "../button/Button"
+import { setIsFetchingState } from "../../redux/actions.js/testCaseActions"
 
-const TestChallengesForm = ({ fetchValidationResults, appState }) => {
+const TestChallengesForm = ({
+    fetchValidationResults,
+    fetchingStatus,
+    setAPIRequestStatusToFetching
+}) => {
     const [userInput, setUserInput] = useState("")
+
+    console.log(fetchingStatus)
 
     const handleChange = e => {
         setUserInput(e.target.value)
@@ -14,6 +21,7 @@ const TestChallengesForm = ({ fetchValidationResults, appState }) => {
 
     const handleSubmit = e => {
         e.preventDefault()
+        setAPIRequestStatusToFetching()
         fetchValidationResults(userInput)
         setUserInput("")
     }
@@ -31,9 +39,18 @@ const TestChallengesForm = ({ fetchValidationResults, appState }) => {
                     label="Text"
                     required
                 />
-                <Button onClick={handleSubmit} isGoogleSignIn={false} type="submit">
-                    Submit
-                </Button>
+
+                {fetchingStatus === "fetching" ? (
+                    <h3 className="loading-text">Loading</h3>
+                ) : (
+                    <Button
+                        onClick={handleSubmit}
+                        isGoogleSignIn={false}
+                        type="submit"
+                    >
+                        Submit
+                    </Button>
+                )}
             </form>
         </div>
     )
@@ -41,13 +58,14 @@ const TestChallengesForm = ({ fetchValidationResults, appState }) => {
 
 const mapStateToProps = state => {
     return {
-        appState: state
+        fetchingStatus: state.testCases.fetchingState
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchValidationResults: userInput => dispatch(validateTestCase(userInput))
+        fetchValidationResults: userInput => dispatch(validateTestCase(userInput)),
+        setAPIRequestStatusToFetching: () => dispatch(setIsFetchingState())
     }
 }
 

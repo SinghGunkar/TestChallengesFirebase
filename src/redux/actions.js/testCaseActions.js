@@ -72,3 +72,12 @@ export const validateTestCase = payload => {
             .catch(err => console.log(err))
     }
 }
+
+export const setIsFetchingState = () => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        return dispatch({
+            type: "START_FETCHING_VALIDATION_RESULTS",
+            payload: "fetching"
+        })
+    }
+}

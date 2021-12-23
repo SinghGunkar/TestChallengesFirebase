@@ -15,7 +15,7 @@ const testCasesReducer = (state = initialState, action) => {
             console.log("Validation was success")
             return { ...state, fetchingState: "idle" }
         case "START_FETCHING_VALIDATION_RESULTS":
-            console.log(action.payload)
+            console.log("Fetching validation results")
             return { ...state, fetchingState: action.payload }
         default:
             return state
