@@ -41,7 +41,9 @@ export const validateTestCase = payload => {
                 const isFoundNewTestCases = newResults.length > 0
 
                 if (isFoundNewTestCases) {
-                    const foundTestCaseTime = new Date()
+                    let foundTestCaseTime = new Date()
+                    foundTestCaseTime = foundTestCaseTime.toUTCString()
+
                     const foundTestCasesWithTimeStamps = newResults
 
                     const dataToStore = foundTestCasesWithTimeStamps

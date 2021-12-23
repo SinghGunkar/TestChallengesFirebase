@@ -26,7 +26,7 @@ const SignIn = ({ signIn, signInError, signInWithGoogle }) => {
         <div className="sign-in-container">
             <span className="sign-in-title">Work at Neo?</span>
             <span className="sign-in-sub-title">
-                Sign in with your Neo Google accounts using the blue button
+                Sign in with your Neo Google account using the blue button
             </span>
 
             <form className="sign-in-form" onSubmit={handleSubmit}>
