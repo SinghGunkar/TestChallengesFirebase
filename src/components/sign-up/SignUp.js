@@ -16,9 +16,6 @@ const SignUp = ({ signUpUser, signUpError }) => {
 
     const handleSubmit = event => {
         event.preventDefault()
-        console.log(
-            `Attempted sign in using:\nUsername: ${state.name}\n${state.email}\nPassword: ${state.password}\nConfirmPassword: ${state.confirmPassword}`
-        )
         signUpUser(state)
         setState({ name: "", email: "", password: "", confirmPassword: "" })
     }
@@ -30,10 +27,17 @@ const SignUp = ({ signUpUser, signUpError }) => {
 
     return (
         <div className="sign-up-container">
-            <span className="sign-up-title">Don't have an account?</span>
-            <span className="sign-up-sub-title">Sign up instead</span>
+            <span className="sign-up-title">Sign up</span>
+            <span className="sign-up-sub-title">
+                Note: Sign up is currently disabled
+            </span>
 
-            <form className="sign-up-form" onSubmit={handleSubmit}>
+            <form
+                className="sign-up-form"
+                onSubmit={() => {
+                    console.log("Sign up disabled")
+                }}
+            >
                 <FormInput
                     name="name"
                     type="name"
