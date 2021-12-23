@@ -13,8 +13,6 @@ const TestChallengesForm = ({
 }) => {
     const [userInput, setUserInput] = useState("")
 
-    console.log(fetchingStatus)
-
     const handleChange = e => {
         setUserInput(e.target.value)
     }
