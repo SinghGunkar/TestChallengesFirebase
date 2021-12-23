@@ -3,7 +3,12 @@ export const signUpUser = payload => {
         const firestore = getFirestore()
         const firebase = getFirebase()
 
-        // const { name, email, password, confirmPassword } = payload
+        /* 
+        Note: confirm password functionality is not implemented, use:
+        `const { name, email, password, confirmPassword } = payload`
+        to destrucutre paramters of the payload 
+        */
+
         const { name, email, password } = payload
 
         firebase
@@ -48,7 +53,7 @@ export const signOut = () => {
 
         firebase
             .logout()
-            .then(() => {
+            .then(response => {
                 dispatch({ type: "SIGNOUT_SUCCESS" })
             })
             .catch(err => {
@@ -58,16 +63,17 @@ export const signOut = () => {
 }
 
 export const signInWithGoogle = () => {
-    return (dispatch, getState, { getFirebase }) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firebase = getFirebase()
-
         firebase
             .login({
                 provider: "google",
                 type: "popup"
             })
-            .then(() => {
-                dispatch({ type: "GOOGLE_SIGN_IN_SUCCESS" })
+            .then(response => {
+                return dispatch({
+                    type: "GOOGLE_SIGN_IN_SUCCESS"
+                })
             })
             .catch(err => {
                 dispatch({ type: "LOGIN_ERROR", payload: err })

@@ -30,6 +30,7 @@ const authReducer = (state = initialState, action) => {
                 signUpError: action.payload.message
             }
         case "GOOGLE_SIGN_IN_SUCCESS":
+            console.log(action)
             console.log("Google sign in success")
             return {
                 ...state,

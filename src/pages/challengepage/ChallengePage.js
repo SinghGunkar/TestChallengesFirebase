@@ -6,7 +6,7 @@ import TestCasesFound from "../../components/testCasesFound/TestCasesFound"
 import { connect } from "react-redux"
 import { Redirect } from "react-router-dom"
 
-const ChallengePage = ({ isUserSignedIn }) => {
+const ChallengePage = ({ isUserSignedIn, isUserHasPropertyCreatedAt }) => {
     if (!isUserSignedIn) return <Redirect to="/signinsignup" />
 
     return (
@@ -25,7 +25,8 @@ const ChallengePage = ({ isUserSignedIn }) => {
 
 const mapStateToProps = state => {
     return {
-        isUserSignedIn: !state.firebase.auth.isEmpty
+        isUserSignedIn: !state.firebase.auth.isEmpty,
+        isUserHasPropertyCreatedAt: state.firebase
     }
 }
 

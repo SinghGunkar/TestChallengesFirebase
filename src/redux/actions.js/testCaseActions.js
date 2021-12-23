@@ -3,7 +3,7 @@ import inputValidationAPI from "../../apis/inputValidationAPI"
 /* 
     Note: the code is this file is a messy. Suggested course of action to clean up the code below
     - refactor the code logic below into seperate actions and reducers
-    - transfer client side logic over to firebase cloud functions, caveat this will increase costs
+    - transfer client side logic over to firebase cloud functions, caveat: this will increase costs
 */
 
 export const validateTestCase = payload => {
