@@ -16,5 +16,6 @@ export const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 firebase.firestore().settings({ timestampsInSnapshot: true, merge: true })
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
 
 export default firebase
