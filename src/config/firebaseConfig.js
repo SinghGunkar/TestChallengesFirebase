@@ -10,8 +10,8 @@ export const firebaseConfig = {
     messagingSenderId: "17043746175",
     appId: "1:17043746175:web:56361401f640c6e2a43e4a",
     measurementId: "G-KQR8C7DSQH",
-    userProfile: "users", // unsure if this line is needed
-    useFirestoreForProfile: true // unsure if this line is needed
+    userProfile: "users",
+    useFirestoreForProfile: true
 }
 
 firebase.initializeApp(firebaseConfig)
