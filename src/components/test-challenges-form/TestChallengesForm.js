@@ -35,6 +35,7 @@ const TestChallengesForm = ({
                     handleChange={e => handleChange(e)}
                     value={userInput || ""}
                     label="Text"
+                    disabled={fetchingStatus === "fetching" ? "disabled" : ""}
                     required
                 />
 
