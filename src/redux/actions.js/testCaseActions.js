@@ -11,6 +11,9 @@ export const validateTestCase = payload => {
         const fireStore = getFirestore()
         const state = getState()
         const uid = state.firebase.auth.uid
+        const lastLoginAt = state.firebase.auth.lastLoginAt
+        const lastLoginAtFormatted = Date(lastLoginAt)
+
         let currentUserTestCases = state.firebase.profile.FoundTestCases?.map(
             object => object.testCase
         )
@@ -49,7 +52,8 @@ export const validateTestCase = payload => {
                     const dataToStore = foundTestCasesWithTimeStamps
                         .map(testCase => ({
                             testCase,
-                            timeFound: foundTestCaseTime
+                            timeFound: foundTestCaseTime,
+                            lastLogin: lastLoginAtFormatted
                         }))
                         .concat(currentUserTestCasesWithTimeStamps)
 

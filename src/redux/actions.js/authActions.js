@@ -6,7 +6,7 @@ export const signUpUser = payload => {
         /* 
         Note: confirm password functionality is not implemented, use:
         `const { name, email, password, confirmPassword } = payload`
-        to destrucutre paramters of the payload 
+        to destrucutre paramaters of the payload 
         */
 
         const { name, email, password } = payload

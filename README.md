@@ -3,7 +3,8 @@
 Here are screenshots of the project:
 
 ![img1](filesForReadmd/HomePage.png)
-![img2](filesForReadmd/ShopPage.png)
+![img2](filesForReadmd/SignInSignUpPage.png)
+![img3](filesForReadmd/ChallengePage.png)
 
 ## Problems
 

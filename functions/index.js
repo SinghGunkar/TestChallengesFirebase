@@ -9,8 +9,6 @@ exports.onUserCreated = functions.auth.user().onCreate(user => {
     const createdAtUtctime = Date(createdAt)
     const email = user.email
 
-    console.log(user)
-
     return admin
         .firestore()
         .collection(`users`)
