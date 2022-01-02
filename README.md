@@ -2,10 +2,16 @@
 
 Here are screenshots of the project:
 
-#### MainPage
+## Home
 
 ![img1](filesForReadmd/HomePage.png)
+
+## SignIn/SignUp
+
 ![img2](filesForReadmd/SignInSignUpPage.png)
+
+## Challenge
+
 ![img3](filesForReadmd/ChallengePage.png)
 
 ## Project Takeaways
