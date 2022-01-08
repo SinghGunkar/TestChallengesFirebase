@@ -28,7 +28,7 @@ const TestCasesFound = () => {
 
     return (
         <div className="found-test-cases-container">
-            <h3>Test Cases Found: {`${numberTestCasesFound}/19`}</h3>
+            <h3>Test Cases Found: {`${numberTestCasesFound}/20`}</h3>
 
             {foundTestCases.map((result, idk) => {
                 return <li key={idk}>{result.testCase}</li>
@@ -36,15 +36,5 @@ const TestCasesFound = () => {
         </div>
     )
 }
-
-// const mapStateToProps = state => {
-//     console.log(state)
-
-//     return {
-//         validationResults: state.testCases.validationResults,
-//         dataFromFireStore: state.firestore.data,
-//         uid: state.firebase.auth.uid
-//     }
-// }
 
 export default TestCasesFound

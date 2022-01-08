@@ -4,9 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 10px;
     overflow: hidden;
-    // border: 1px red solid;
 
     &:last-child {
         margin-right: 0px;
@@ -30,25 +28,22 @@
     }
 
     .content {
-        height: 350px;
         display: flex;
-        flex-direction: row;
-        align-items: center;
+        flex-direction: column;
         justify-content: center;
         border-radius: 3px;
         cursor: pointer;
         opacity: 0.7;
         position: absolute;
-        // border: 1px red solid;
 
         .title {
-            margin: 0 5px 0;
             font-size: 22px;
-            font-weight: bold;
-            writing-mode: vertical-rl;
-            text-orientation: upright;
-            padding-top: 25px;
-            padding-bottom: 25px;
+            // writing-mode: vertical-rl;
+            // text-orientation: upright;
+
+            text-align: center;
+            padding-left: 50px;
+            padding-right: 50px;
             background-color: white;
             border-radius: 2px;
         }
@@ -57,7 +52,6 @@
             font-size: 22px;
             background-color: white;
             border-radius: 2px;
-            margin-left: 25px;
             padding-left: 25px;
             padding-right: 25px;
         }
@@ -71,10 +65,10 @@
 
             .subtitle {
                 font-size: 16px;
-                writing-mode: vertical-rl;
-                text-orientation: upright;
-                padding-top: 25px;
-                padding-bottom: 25px;
+                // writing-mode: vertical-rl;
+                // text-orientation: upright;
+                padding-top: 5px;
+                padding-bottom: 5px;
                 padding-left: 5px;
                 padding-right: 5px;
             }
